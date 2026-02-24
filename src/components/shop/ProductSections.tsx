@@ -103,7 +103,7 @@ const ProductSections = ({ onProductClick, onSeeAllClick }: ProductSectionsProps
 
   const SectionSlider = ({ section, products }: { section: any, products: any[] }) => {
     const [scrollPosition, setScrollPosition] = useState(0);
-    const containerRef = useState<HTMLDivElement | null>(null)[0];
+    const [containerRef, setContainerRef] = useState<HTMLDivElement | null>(null);
 
     const scroll = (direction: 'left' | 'right') => {
       if (!containerRef) return;
@@ -135,7 +135,7 @@ const ProductSections = ({ onProductClick, onSeeAllClick }: ProductSectionsProps
 
         <div className="relative">
           <div 
-            ref={(el) => containerRef = el}
+            ref={(el) => setContainerRef(el)}
             className="flex space-x-4 overflow-x-auto scrollbar-hide pb-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
